@@ -5,15 +5,9 @@ import { Head } from "@inertiajs/vue3";
 import { computed, ref } from "vue";
 import JobInfo from "@/Components/Jobs/JobInfo.vue";
 import JobForm from "@/Components/Jobs/JobForm.vue";
-
+import { capitalize } from "vue";
 const props = defineProps({ job: Object });
 let editMode = ref(false);
-let capitalizedStatus = computed(() => {
-    let output =
-        props.job.status.charAt(0).toUpperCase() + props.job.status.slice(1);
-    console.log(output);
-    return output;
-});
 </script>
 
 <template>
@@ -42,17 +36,9 @@ let capitalizedStatus = computed(() => {
                             <button @click="editMode = false" v-else>X</button>
                         </div>
 
-                        <JobInfo
-                            :capitalizedStatus="capitalizedStatus"
-                            :job="job"
-                            v-if="editMode == false"
-                        />
+                        <JobInfo :job="job" v-if="editMode == false" />
 
-                        <JobForm
-                            :capitalizedStatus="capitalizedStatus"
-                            :job="job"
-                            v-else
-                        />
+                        <JobForm :job="job" v-else />
                     </Card>
 
                     <!-- <div class="p-6 text-gray-900">You're logged in!</div> -->

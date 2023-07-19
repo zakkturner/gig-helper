@@ -1,11 +1,6 @@
 <template>
     <form @submit.prevent="formData.put(route('jobs.update', job.id))">
         <div class="flex justify-between border-b p-2 mb-6">
-            <!-- <div class="flex flex-col">
-                <label class="font-semibold text-lg">Job Title</label>
-                <input type="text" class="text-sm" :value="job.job_title" />
-            </div> -->
-            {{ formData }}
             <Input
                 title="Job Title"
                 inputName="job_title"
@@ -34,12 +29,6 @@
                 title="Description"
                 v-model="formData.description"
             />
-            <!-- <div>
-                <label class="font-semibold text-lg">Description</label>
-                <p>
-                    {{ job.description }}
-                </p>
-            </div> -->
         </div>
         <div class="flex justify-between border-b pb-4 mb-6">
             <Input
@@ -56,27 +45,17 @@
         <button class="bg-green-500 py-2 px-6 rounded-md text-white">
             Save Job
         </button>
-        <!-- <Link
-            :href="route('jobs.edit', job.id)"
-            class="bg-green-500 py-2 px-6 rounded-md text-white"
-            >Edit</Link
-        > -->
     </form>
 </template>
 
 <script setup>
-import { reactive } from "vue";
-import { Link, useForm } from "@inertiajs/vue3";
-// import { Job } from "../../utils/interfaces";
+import { useForm } from "@inertiajs/vue3";
+import { useRoute } from "vue-router";
 import Input from "../form/Input.vue";
 import TextArea from "../form/TextArea.vue";
 
-// interface Props {
-//     job: Job;
-// }
 const props = defineProps({
     job: Object,
-    capitalizedStatus: String,
 });
 
 const formData = useForm({
@@ -90,10 +69,4 @@ const formData = useForm({
     updated_at: props.job.updated_at,
     user_id: props.job.user_id,
 });
-
-const submitForm = () => {
-    //
-};
 </script>
-
-<style lang="scss" scoped></style>

@@ -1,7 +1,6 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
-import { Head } from "@inertiajs/vue3";
-
+import { Head, Link } from "@inertiajs/vue3";
 import JobTable from "@/Components/Tables/JobTable.vue";
 
 defineProps({ jobs: Object });
@@ -23,11 +22,13 @@ defineProps({ jobs: Object });
             <div class="max-w-10xl mx-auto sm:px-6 lg:px-8">
                 <div class="overflow-hidden">
                     <div class="mb-6 w-full flex justify-end">
-                        <button
+                        <Link
+                            as="button"
+                            href="/jobs/create"
                             class="bg-green-500 text-white text-sm rounded-lg px-6 py-2"
                         >
                             Add New Job
-                        </button>
+                        </Link>
                     </div>
 
                     <!-- Job Table -->

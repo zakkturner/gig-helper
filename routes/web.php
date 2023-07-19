@@ -40,6 +40,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::get('/jobs', [JobsController::class, 'index'])->middleware(['auth'])->name('jobs.index');
+Route::get('/jobs/create', [JobsController::class, 'create'])->middleware(['auth'])->name('jobs.create');
 Route::get('/jobs/{id}', [JobsController::class, 'show'])->middleware(['auth']);
 Route::delete('/jobs/{job}', [JobsController::class, 'destroy'])->middleware(['auth'])->name('jobs.destroy');
 Route::put('/jobs/{job}', [JobsController::class, 'update'])->name('jobs.update');

@@ -15,7 +15,7 @@
             </div>
             <div>
                 <h2 class="font-semibold text-lg">Status</h2>
-                <p>{{ capitalizedStatus }}</p>
+                <p>{{ capitalize(job.status) }}</p>
             </div>
         </div>
         <div class="flex justify-between border-b pb-4 mb-6">
@@ -56,11 +56,11 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
+import { computed, capitalize } from "vue";
 import { format } from "date-fns";
+
 const props = defineProps({
     job: Object,
-    capitalizedStatus: String,
 });
 
 const formattedDate = computed(() => (date) => {

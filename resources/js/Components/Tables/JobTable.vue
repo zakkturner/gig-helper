@@ -28,7 +28,7 @@
                     </th>
                     <td class="px-6 py-4">{{ job.company }}</td>
                     <td class="px-6 py-4">{{ job.contact_phone_number }}</td>
-                    <td class="px-6 py-4">{{ job.status }}</td>
+                    <td class="px-6 py-4">{{ capitalize(job.status) }}</td>
                     <td class="px-6 py-4 flex flex-col">
                         <a
                             :href="`/jobs/${job.id}`"
@@ -82,7 +82,7 @@
 <script setup>
 import Modal from "@/Components/Modal.vue";
 import { Link } from "@inertiajs/vue3";
-import { ref } from "vue";
+import { ref, capitalize } from "vue";
 let modalOpen = ref(false);
 
 let selectedJob = ref(null);

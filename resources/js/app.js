@@ -2,6 +2,7 @@ import "./bootstrap";
 import "../css/app.css";
 
 import { createApp, h } from "vue";
+import { createPinia } from "pinia";
 import { createInertiaApp } from "@inertiajs/vue3";
 import { resolvePageComponent } from "laravel-vite-plugin/inertia-helpers";
 import { ZiggyVue } from "../../vendor/tightenco/ziggy/dist/vue.m";
@@ -19,6 +20,8 @@ library.add(faBriefcase, faUsers, faLightbulb, faChartLine, faPencil);
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 
+const pinia = createPinia();
+
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
     resolve: (name) =>
@@ -30,6 +33,7 @@ createInertiaApp({
         return createApp({ render: () => h(App, props) })
             .use(plugin)
             .use(ZiggyVue, Ziggy)
+            .use(pinia)
             .component("font-awesome-icon", FontAwesomeIcon)
             .mount(el);
     },

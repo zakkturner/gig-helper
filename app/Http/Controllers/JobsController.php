@@ -24,6 +24,12 @@ class JobsController extends Controller
         ]);
     }
 
+
+    public function create()
+    {
+        return Inertia::render('Jobs/Create');
+    }
+
     public function update(Jobs $job)
     {
 
