@@ -12,9 +12,10 @@ import {
     faUsers,
     faLightbulb,
     faChartLine,
+    faPencil,
 } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faBriefcase, faUsers, faLightbulb, faChartLine);
+library.add(faBriefcase, faUsers, faLightbulb, faChartLine, faPencil);
 
 const appName = import.meta.env.VITE_APP_NAME || "Laravel";
 

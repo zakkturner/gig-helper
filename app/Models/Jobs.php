@@ -8,8 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Jobs extends Model
 {
     use HasFactory;
-
-    public function user(){
+    protected $guarded = [];
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

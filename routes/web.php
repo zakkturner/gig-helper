@@ -27,7 +27,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard',[
+    return Inertia::render('Dashboard', [
         'jobs' => Jobs::all()
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -39,7 +39,8 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::get('/jobs', [JobsController::class, 'index'])->middleware(['auth']);
+Route::get('/jobs', [JobsController::class, 'index'])->middleware(['auth'])->name('jobs.index');
 Route::get('/jobs/{id}', [JobsController::class, 'show'])->middleware(['auth']);
-
-require __DIR__.'/auth.php';
+Route::delete('/jobs/{job}', [JobsController::class, 'destroy'])->middleware(['auth'])->name('jobs.destroy');
+Route::put('/jobs/{job}', [JobsController::class, 'update'])->name('jobs.update');
+require __DIR__ . '/auth.php';

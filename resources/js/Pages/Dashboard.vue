@@ -76,11 +76,6 @@ const interviewNum = computed(() => countInterviews(props.jobs));
                         <div class="mb-6 w-full">
                             <JobsAppliedChart :jobs="jobs" />
                         </div>
-
-                        <!-- <div>
-                            <p>42 Jobs Applied</p>
-                            <p>Latest Application: Google</p>
-                        </div> -->
                     </Card>
                     <Card>
                         <header class="flex items-center justify-between">
@@ -94,11 +89,6 @@ const interviewNum = computed(() => countInterviews(props.jobs));
                         <div class="mb-6 w-full">
                             <ClientsChart />
                         </div>
-
-                        <!-- <div>
-                            <p>42 Jobs Applied</p>
-                            <p>Latest Application: Google</p>
-                        </div> -->
                     </Card>
 
                     <!-- <div class="p-6 text-gray-900">You're logged in!</div> -->

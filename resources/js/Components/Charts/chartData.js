@@ -26,7 +26,7 @@ const getCountsPerMonth = (jobs, countPerMonth, resPerMonth) => {
         const key = `${year}-${month}`;
         countPerMonth[key] = (countPerMonth[key] || 0) + 1;
 
-        if (job.status === "interview") {
+        if (job.status === "interviewed") {
             resPerMonth[key] = (resPerMonth[key] || 0) + 1;
         }
     });
@@ -36,7 +36,7 @@ export const countInterviews = (jobs) => {
     let output = 0;
 
     jobs.forEach((job) => {
-        if (job.status == "interview") {
+        if (job.status == "interviewed") {
             output += 1;
         }
     });
