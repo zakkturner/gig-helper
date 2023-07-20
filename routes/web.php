@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\JobsController;
+use App\Http\Controllers\ClientController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -37,16 +38,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/jobs', JobsController::class)->except('edit');
+    Route::resource('/clients', ClientController::class)->except('edit');
 });
 
 
 
 
-
-// Route::get('/jobs', [JobsController::class, 'index'])->middleware(['auth'])->name('jobs.index');
-// Route::get('/jobs/create', [JobsController::class, 'create'])->middleware(['auth'])->name('jobs.create');
-// Route::get('/jobs/{id}', [JobsController::class, 'show'])->middleware(['auth']);
-// Route::delete('/jobs/{job}', [JobsController::class, 'destroy'])->middleware(['auth'])->name('jobs.destroy');
-// Route::put('/jobs/{job}', [JobsController::class, 'update'])->name('jobs.update');
-// Route::post('/jobs', [JobsController::class, 'store'])->name('jobs.store');
 require __DIR__ . '/auth.php';

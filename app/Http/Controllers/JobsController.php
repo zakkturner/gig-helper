@@ -6,12 +6,14 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use App\Models\Jobs;
 
+
 class JobsController extends Controller
 {
     public function index()
     {
+        $user = request()->user();
         return Inertia::render('Jobs/Index', [
-            'jobs' => Jobs::latest()->get()
+            'jobs' => $user->jobs()->latest()->get()
         ]);
     }
 

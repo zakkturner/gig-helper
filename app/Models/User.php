@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Jobs;
+use App\Models\Clients;
 
 class User extends Authenticatable
 {
@@ -43,13 +45,18 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function jobs(){
-        $this->hasMany(Jobs::class);
+    public function jobs()
+    {
+        return $this->hasMany(Jobs::class);
     }
-    public function clients(){
-        // $this->hasMany();
+
+
+    public function clients()
+    {
+        return $this->hasMany(Client::class);
     }
-    public function quotes(){
+    public function quotes()
+    {
         // $this->hasMany();
     }
 }
