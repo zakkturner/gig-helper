@@ -6,6 +6,7 @@
         <textarea
             type="text"
             class="text-sm w-full"
+            v-bind="$attrs"
             :name="inputName"
             @input="$emit('update:modelValue', $event.target.value)"
             rows="10"
@@ -20,6 +21,9 @@
 <script setup>
 const props = defineProps(["title", "modelValue", "inputName"]);
 
+defineOptions({
+    inheritAttrs: false,
+});
 const emit = defineEmits(["update:ModelValue"]);
 </script>
 

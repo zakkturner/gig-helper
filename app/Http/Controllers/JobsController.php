@@ -30,6 +30,23 @@ class JobsController extends Controller
         return Inertia::render('Jobs/Create');
     }
 
+    public function store()
+    {
+        $attributes = request()->validate([
+            'job_title' => 'required',
+            'company' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+            'contact_name',
+            'contact_phone_number'
+        ]);
+        $attributes['contact_name'] = request()->contact_name;
+        $attributes['contact_phone_number'] = request()->contact_phone_number;
+        $attributes['user_id'] = auth()->id();
+        Jobs::create($attributes);
+        return redirect()->route('jobs.index')->with('message', 'Job Created Successfully');
+    }
+
     public function update(Jobs $job)
     {
 
@@ -39,9 +56,11 @@ class JobsController extends Controller
             'company' => 'required',
             'description' => 'required',
             'status' => 'required',
-            'contact_name' => 'required',
-            'contact_phone_number' => 'required',
+
         ]);
+
+        $attributes['contact_name'] = request()->contact_name;
+        $attributes['contact_phone_number'] = request()->contact_phone_number;
 
         $job->update($attributes);
         return redirect()->route('jobs.index')->with('message', 'Job Updated Successfully');

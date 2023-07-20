@@ -1,15 +1,17 @@
 <template>
-    <form @submit.prevent="formData.put(route('jobs.update', job.id))">
+    <form @submit.prevent="formData.post(route('jobs.store'))">
         <div class="flex justify-between border-b p-2 mb-6">
             <Input
                 title="Job Title"
                 inputName="job_title"
                 v-model="formData.job_title"
+                required
             />
             <Input
                 title="Company"
                 inputName="company"
                 v-model="formData.company"
+                required
             />
 
             <div class="flex flex-col">
@@ -26,7 +28,7 @@
         <div class="flex justify-between border-b pb-4 mb-6">
             <TextArea
                 inputName="description"
-                title="Description"
+                title="Notes"
                 v-model="formData.description"
             />
         </div>
@@ -49,24 +51,18 @@
 </template>
 
 <script setup>
-import { useForm } from "@inertiajs/vue3";
-
-import Input from "../form/Input.vue";
-import TextArea from "../form/TextArea.vue";
-
-const props = defineProps({
-    job: Object,
-});
-
+import Input from "../../Components/form/Input.vue";
+import TextArea from "../../Components/form/TextArea.vue";
+import { useForm, Link } from "@inertiajs/vue3";
 const formData = useForm({
-    job_title: props.job.job_title,
-    company: props.job.company,
-    description: props.job.description,
-    status: props.job.status,
-    contact_name: props.job.contact_name,
-    contact_phone_number: props.job.contact_phone_number,
-    created_at: props.job.created_at,
-    updated_at: props.job.updated_at,
-    user_id: props.job.user_id,
+    job_title: "",
+    company: "",
+    description: "",
+    status: "",
+    contact_name: "",
+    contact_phone_number: "",
+    user_id: "",
 });
 </script>
+
+<style lang="scss" scoped></style>
